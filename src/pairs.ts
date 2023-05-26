@@ -4,7 +4,7 @@
 import type { KeyringPair, KeyringPairs } from '@polkadot/keyring/types';
 import type { HexString } from '@polkadot/util/types';
 
-import { decodeAddress, isHex, isU8a, u8aToHex, u8aToU8a } from '@noir/util';
+import { decodeAddress, isHex, isU8a, u8aToHex, u8aToU8a } from '@pinot/util';
 
 type KeyringPairMap = Record<string, KeyringPair>;
 

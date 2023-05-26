@@ -1,27 +1,42 @@
 {
-  "name": "@noir/keyring",
+  "name": "@pinot/keyring",
   "version": "0.1.0",
   "license": "Apache-2.0",
   "type": "module",
+  "description": "Keyring implementations for @pinot",
+  "author": "Haderech Pte. Ltd.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pinot-js/keyring.git"
+  },
+  "files": [
+    "cjs",
+    "dist"
+  ],
   "exports": {
-    ".": "./src/index.ts",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./cjs/index.js",
+      "import": "./dist/index.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts",
+      "require": "./cjs/types.js",
+      "import": "./dist/types.js"
+    },
+    "./pair/types": {
+      "types": "./dist/pair/types.d.ts",
+      "require": "./cjs/pair/types.js",
+      "import": "./dist/pair/types.js"
+    },
     "./package.json": "./package.json"
   },
-  "main": "./src/index.ts",
-  "publishConfig": {
-    "access": "public",
-    "exports": {
-      ".": {
-        "types": "./dist/index.d.ts",
-        "require": "./dist/index.cjs",
-        "import": "./dist/index.js"
-      },
-      "./package.json": "./package.json"
-    },
-    "main": "./dist/index.js"
-  },
+  "main": "./dist/index.js",
   "scripts": {
-    "build": "rm -rf dist && tsup ./src/index.ts --format cjs,esm --dts",
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:cjs": "rm -rf cjs && tsc -p tsconfig.cjs.json && echo '{\"type\": \"commonjs\"}' > cjs/package.json",
+    "build:esm": "rm -rf dist && tsc",
+    "format": "prettier --plugin-search-dir . --write .",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --quiet",
     "prepack": "npm run build",
     "typecheck": "tsc --noEmit",
@@ -32,12 +47,12 @@
     "@typescript-eslint/parser": "^5.49.0",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.6.0",
-    "tsup": "^6.5.0",
+    "prettier": "^2.8.8",
     "typescript": "^4.9.5",
     "vitest": "^0.31.0"
   },
   "dependencies": {
-    "@noir/util": "github:noir-js/util",
+    "@pinot/util": "^0.1.2",
     "@polkadot/keyring": "^12.2.1"
   }
 }
