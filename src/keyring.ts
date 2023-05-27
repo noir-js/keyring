@@ -1,8 +1,8 @@
 // Copyright 2017-2023 @polkadot/keyring authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { KeyringInstance, KeyringOptions, KeyringPair, KeyringPair$Json, KeyringPair$Meta } from '@polkadot/keyring/types';
 import type { EncryptedJsonEncoding, Keypair, KeypairType } from '@polkadot/util-crypto/types';
+import type { KeyringInstance, KeyringOptions, KeyringPair, KeyringPair$Json, KeyringPair$Meta } from './types.js';
 
 import { decodeAddress, encodeAddress, hexToU8a, isHex, stringToU8a } from '@pinot/util';
 import { DEV_PHRASE } from '@polkadot/keyring/defaults';

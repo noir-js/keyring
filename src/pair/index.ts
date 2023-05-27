@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import type { HexString } from '@pinot/util/types';
-import type { PairInfo } from '@polkadot/keyring/pair/types';
-import type { KeyringPair, KeyringPair$Json, KeyringPair$Meta, SignOptions } from '@polkadot/keyring/types';
 import type { EncryptedJsonEncoding, Keypair, KeypairType } from '@polkadot/util-crypto/types';
+import type { KeyringPair, KeyringPair$Json, KeyringPair$Meta, SignOptions } from '../types.js';
+import type { PairInfo } from './types.js';
 
 import { compactAddLength, objectSpread, u8aConcat, u8aEmpty, u8aEq, u8aToHex, u8aToU8a } from '@pinot/util';
 import { decodePair } from '@polkadot/keyring/pair/decode';
