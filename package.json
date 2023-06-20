@@ -1,6 +1,6 @@
 {
   "name": "@pinot/keyring",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "Apache-2.0",
   "type": "module",
   "description": "Keyring implementations for @pinot",
@@ -52,7 +52,7 @@
     "vitest": "^0.31.0"
   },
   "dependencies": {
-    "@pinot/util": "^0.1.2",
+    "@pinot/util": "^0.2.0",
     "@polkadot/keyring": "^12.2.1"
   }
 }
