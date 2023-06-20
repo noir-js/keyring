@@ -6,7 +6,7 @@ import type { EncryptedJsonEncoding, Keypair, KeypairType } from '@polkadot/util
 import type { KeyringPair, KeyringPair$Json, KeyringPair$Meta, SignOptions } from '../types.js';
 import type { PairInfo } from './types.js';
 
-import { compactAddLength, objectSpread, u8aConcat, u8aEmpty, u8aEq, u8aToHex, u8aToU8a } from '@pinot/util';
+import { objectSpread, u8aConcat, u8aEmpty, u8aEq, u8aToHex, u8aToU8a } from '@pinot/util';
 import { decodePair } from '@polkadot/keyring/pair/decode';
 import { encodePair } from '@polkadot/keyring/pair/encode';
 import { pairToJson } from '@polkadot/keyring/pair/toJson';
@@ -115,7 +115,7 @@ export function createPair ({ toSS58, type }: Setup, { publicKey, secretKey }: P
 
     return type === 'ethereum'
       ? ethereumEncode(raw)
-      : toSS58(compactAddLength(raw));
+      : toSS58(raw);
   };
 
   return {
@@ -127,7 +127,7 @@ export function createPair ({ toSS58, type }: Setup, { publicKey, secretKey }: P
 
       return type === 'ethereum'
         ? raw.slice(-20)
-        : compactAddLength(raw);
+        : raw;
     },
     get isLocked (): boolean {
       return isLocked(secretKey);
